@@ -8,7 +8,7 @@
 |               |
 -----------------
 
-5 - + 5v
+5 - + 5v //DO NOT CONNECT TO ARDUINO!!! WILL DESTROY MOTOR!!! SUPPOSED TO GO IN VIN TO POWER THE ARDUINO!!!
 4 - direction  
 3 - speed      
 2 - enable    
