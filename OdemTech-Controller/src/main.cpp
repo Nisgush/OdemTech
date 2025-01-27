@@ -1,5 +1,5 @@
-//#include <Arduino.h>
-//#include "DocykeMotor.h"
+#include <Arduino.h>
+#include "DocykeMotor.h"
 
 /**
 -----------------
@@ -9,22 +9,18 @@
 -----------------
 
 5 - + 5v
-4 - direction  --> 12
-3 - speed      --> 13
-2 - enable     --> 5
+4 - direction  
+3 - speed      
+2 - enable    
 1 - - GND
 
 **/
 
-/*#define ENABLE_PIN 5
-#define DIRECTION_PIN 12
-#define VELOCITY_PIN 13
+#define ENABLE_PIN 5 //change to pin you connected
+#define DIRECTION_PIN 12 //change to pin you connected
+#define VELOCITY_PIN 13 //change to pin you connected
 
-int joystick_x = 32;
-
-
-// added a comment 
-
+//Creating a motor object with the pin connections set above
 DocykeMotor motor(ENABLE_PIN, DIRECTION_PIN, VELOCITY_PIN); // Replace with your actual pin numbers
 
 void setup()
@@ -36,19 +32,16 @@ void setup()
   
   Serial.println("Starting motor");
 
-  motor.enable();
+  motor.enable(); //Starting the motor
   motor.setDirection(false); // Set to forward
   
 }
-// Comment Yoad
+
+int powers[]={195,205,215,225,235,245,255};
 
 void loop()
 {
-  float x_value = (float)(analogRead(joystick_x)-2800)/5;
-  Serial.println(x_value);
-  motor.drive(x_value);
-  /*
-  Serial.println(!motor.getDirection()?"Forward":"Backwards");
-  motor.drive(x_value);
-  
-}*/
+  for(int power:powers){//activates the motor with different powers for 1 second each
+    motor.drive(power, 1000);
+  }
+}
