@@ -54,26 +54,26 @@ class Controller{
         digitalWrite(ATT_PIN, HIGH);
     }
 
-    bool triangle = false;
-    bool cross = false;
-    bool circle = false;
-    bool square = false;
-    float left_joystick_X = 0;
-    float left_joystick_Y = 0;
-    bool left_joystick_button = false;
-    bool right_joystick_button = false;
-    float right_joystick_X = 0;
-    float right_joystick_Y = 0;
-    bool up = false;
-    bool right = false;
-    bool down = false;
-    bool left = false;
-    bool select = false;
-    bool start = false;
-    bool left_trigger = false;
-    bool left_bumper = false;
-    bool right_trigger = false;
-    bool right_bumper = false;
+    bool triangle = false; //true = pressed, false = released
+    bool cross = false; //true = pressed, false = released
+    bool circle = false; //true = pressed, false = released
+    bool square = false; //true = pressed, false = released
+    float left_joystick_X = 0; //value between 0 to 255
+    float left_joystick_Y = 0; //value between 0 to 72
+    bool left_joystick_button = false; //true = pressed, false = released
+    bool right_joystick_button = false; //true = pressed, false = released
+    float right_joystick_X = 0; //value between 0 to 255
+    float right_joystick_Y = 0; //value between 0 to 72
+    bool up = false; //true = pressed, false = released
+    bool right = false; //true = pressed, false = released
+    bool down = false; //true = pressed, false = released
+    bool left = false; //true = pressed, false = released
+    bool select = false; //true = pressed, false = released
+    bool start = false; //true = pressed, false = released
+    bool left_trigger = false; //true = pressed, false = released
+    bool left_bumper = false; //true = pressed, false = released
+    bool right_trigger = false; //true = pressed, false = released
+    bool right_bumper = false; //true = pressed, false = released
 
     void updateData() {
         uint8_t data[8]; // Array to store PS2 response
@@ -118,10 +118,10 @@ class Controller{
         right_bumper = (data[3] & 0x08) == 0;
 
         // Parse joystick data
-        left_joystick_X = power((data[4]-128)/128,3);
-        left_joystick_Y = power((data[5]-128)/128,3);
-        right_joystick_X = power((data[6]-128)/128,3);
-        right_joystick_Y = power((data[7]-128)/128,3);
+        left_joystick_X = data[6];
+        left_joystick_Y = data[7];
+        right_joystick_X = data[4];
+        right_joystick_Y = data[5];
     }
 };
 
