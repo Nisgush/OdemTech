@@ -29,6 +29,14 @@ class Controller{
         return response;
     }
 
+    float power(float a, int b){
+        float result = 1;
+        for(int i = 0; i<b; i++){
+            result*=a;
+        }
+    return result;
+    }
+
 
 
 
@@ -117,10 +125,3 @@ class Controller{
     }
 };
 
-float power(float a, int b){
-    float result = 1;
-    for(int i = 0; i<b; i++){
-        result*=a;
-    }
-    return result;
-}
