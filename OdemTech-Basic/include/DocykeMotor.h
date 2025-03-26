@@ -24,6 +24,7 @@ public:
     void drive(int speed);
     void drive(int speed, int time);
     bool getDirection();
+    uint8_t getVelPin();
 };
 
 #endif 
